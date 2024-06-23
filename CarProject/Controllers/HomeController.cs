@@ -1,3 +1,4 @@
+using CarProject.Domain.Entity;
 using CarProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -15,6 +16,7 @@ namespace CarProject.Controllers
 
         public IActionResult Index()
         {
+            
             return View();
         }
 

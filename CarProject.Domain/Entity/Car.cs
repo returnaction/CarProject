@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarProject.Domain.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,3 +19,4 @@ namespace CarProject.Domain.Entity
         public TypeCar TypeCar { get; set; }
     }
 }
+ 
