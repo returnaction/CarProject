@@ -33,9 +33,9 @@ namespace CarProject.DAL.Repositories
             return await _db.Cars.FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public Car GetByName(string name)
+        public async Task<Car> GetByName(string name)
         {
-            throw new NotImplementedException();
+            return await _db.Cars.FirstOrDefaultAsync(c => c.Name == name);
         }
 
         public async Task<IEnumerable<Car>> Select()
