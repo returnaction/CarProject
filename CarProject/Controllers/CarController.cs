@@ -12,10 +12,6 @@ namespace CarProject.Controllers
             _carRepository = carRepository;
         }
 
-        public async Task<IActionResult> GetCars()
-        {
-            var responce = await  _carRepository.Select();
-            return View(responce);
-        }
+        
     }
 }
