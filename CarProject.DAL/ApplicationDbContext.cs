@@ -14,5 +14,7 @@ namespace CarProject.DAL
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
+
+        
     }
 }

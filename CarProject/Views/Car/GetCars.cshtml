@@ -1,0 +1,18 @@
+﻿@using CarProject.Domain.Entity
+@model IEnumerable<Car>
+
+@{
+}
+
+@foreach (var item in Model)
+{
+    <div>
+        <p>Name: @item.Name</p>
+        <p>Description: @item.Description</p>
+        <p>Model: @item.Model</p>
+        <p>Speed: @item.Speed</p>
+        <p>Price: @item.Price</p>
+        <p>Year: @item.DateCreate</p>
+        <p>Type: @item.TypeCar</p>
+    </div>
+}
