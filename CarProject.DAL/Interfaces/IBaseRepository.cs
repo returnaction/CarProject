@@ -10,7 +10,7 @@ namespace CarProject.DAL.Interfaces
     {
         Task<T> Get(int id);
         Task<IEnumerable<T>> Select();
-        bool Delete();
-        bool Create();
+        bool Delete(T entity);
+        bool Create(T entity);
     }
 }

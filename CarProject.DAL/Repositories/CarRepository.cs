@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,14 +19,26 @@ namespace CarProject.DAL.Repositories
             _db = db;
         }
 
-        public bool Create()
+        public bool Create(Car car)
         {
-            throw new NotImplementedException();
+            if (car is null)
+                return false;
+
+            _db.Cars.Add(car);
+            _db.SaveChangesAsync();
+            return true;
         }
 
-        public bool Delete()
+        public bool Delete(Car entity)
         {
-            throw new NotImplementedException();
+            if (entity is null)
+            {
+                return false;
+            }
+
+            _db.Remove(entity);
+            _db.SaveChanges();
+            return true;
         }
 
         public async Task<Car> Get(int id)
