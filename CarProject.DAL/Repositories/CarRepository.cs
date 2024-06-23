@@ -40,7 +40,7 @@ namespace CarProject.DAL.Repositories
 
         public async Task<IEnumerable<Car>> Select()
         {
-            return await _db.Cars.ToListAsync();
+            return await  _db.Cars.ToListAsync();
         }
     }
 }
