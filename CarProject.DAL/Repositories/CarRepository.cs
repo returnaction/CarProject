@@ -28,9 +28,9 @@ namespace CarProject.DAL.Repositories
             throw new NotImplementedException();
         }
 
-        public Car Get(Car entity)
+        public async Task<Car> Get(int id)
         {
-            throw new NotImplementedException();
+            return await _db.Cars.FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public Car GetByName(string name)
