@@ -9,7 +9,7 @@ namespace CarProject.DAL.Interfaces
     public interface IBaseRepository<T>
     {
         Task<T> Get(int id);
-        Task<IEnumerable<T>> Select();
+        Task<List<T>> Select();
         bool Delete(T entity);
         bool Create(T entity);
     }

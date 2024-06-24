@@ -14,6 +14,7 @@ namespace CarProject.DAL.Repositories
     {
         private readonly ApplicationDbContext _db;
 
+
         public CarRepository(ApplicationDbContext db)
         {
             _db = db;
@@ -51,7 +52,7 @@ namespace CarProject.DAL.Repositories
             return await _db.Cars.FirstOrDefaultAsync(c => c.Name == name);
         }
 
-        public async Task<IEnumerable<Car>> Select()
+        public async Task<List<Car>> Select()
         {
             return await  _db.Cars.ToListAsync();
         }

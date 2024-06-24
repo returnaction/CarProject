@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CarProject.Domain.Entity;
+using CarProject.Domain.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,6 @@ namespace CarProject.Service.Interfaces
 {
     public interface ICarSerivce
     {
+        Task<IBaseResponse<IEnumerable<Car>>> GetCars();
     }
 }
