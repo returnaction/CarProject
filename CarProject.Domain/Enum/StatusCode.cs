@@ -8,6 +8,7 @@ namespace CarProject.Domain.Enum
 {
     public enum StatusCode
     { 
+        CarNotFound = 10,
         OK = 200,
         InternalServerError = 500
     }

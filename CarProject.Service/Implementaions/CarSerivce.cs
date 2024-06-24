@@ -5,6 +5,7 @@ using CarProject.Domain.Response;
 using CarProject.Domain.ViewModels;
 using CarProject.Service.Interfaces;
 using GoogleApi.Entities;
+using GoogleApi.Entities.Maps.Routes.Common.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,6 +77,44 @@ namespace CarProject.Service.Implementaions
                 return new BaseResponse<bool>()
                 {
                     Description = $"[DeleteCar] : {ex.Message}"
+                };
+            }
+        }
+
+        public async Task<IBaseResponse<Car>> Edit(int id, CarViewModel carViewModel)
+        {
+            var baseResponse = new BaseResponse<Car>();
+
+            try
+            {
+                var car = await _carRepository.Get(id);
+                if (car is null)
+                {
+                    baseResponse.StatusCode = StatusCode.CarNotFound;
+                    baseResponse.Description = "Машина не найдена";
+                    return baseResponse;
+                }
+
+                car.Description = carViewModel.Description;
+                car.DateCreate = carViewModel.DateCreate;
+                car.Model = carViewModel.Model;
+                car.Price = carViewModel.Price;
+                car.Speed = carViewModel.Speed;
+                car.Name = carViewModel.Name;
+                car.TypeCar = (TypeCar)Convert.ToInt32(carViewModel.TypeCar);
+
+                await _carRepository.Update(car);
+
+                baseResponse.Description = "Car is created";
+                baseResponse.StatusCode = StatusCode.OK;
+                return baseResponse;
+
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Car>()
+                {
+                    Description = $"[GetCar] : {ex.Message}"
                 };
             }
         }
