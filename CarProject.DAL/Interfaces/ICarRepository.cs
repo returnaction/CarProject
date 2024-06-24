@@ -9,6 +9,6 @@ namespace CarProject.DAL.Interfaces
 {
     public interface ICarRepository : IBaseRepository<Car>
     {
-        Task<Car> GetByName(string name);
+        Task<Car> GetCarByName(string name);
     }
 }

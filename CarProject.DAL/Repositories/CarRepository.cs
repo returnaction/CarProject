@@ -20,7 +20,7 @@ namespace CarProject.DAL.Repositories
             _db = db;
         }
 
-        public bool Create(Car car)
+        public async Task<bool> Create(Car car)
         {
             if (car is null)
                 return false;
@@ -30,7 +30,7 @@ namespace CarProject.DAL.Repositories
             return true;
         }
 
-        public bool Delete(Car entity)
+        public async Task<bool> Delete(Car entity)
         {
             if (entity is null)
             {
@@ -47,7 +47,7 @@ namespace CarProject.DAL.Repositories
             return await _db.Cars.FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public async Task<Car> GetByName(string name)
+        public async Task<Car> GetCarByName(string name)
         {
             return await _db.Cars.FirstOrDefaultAsync(c => c.Name == name);
         }

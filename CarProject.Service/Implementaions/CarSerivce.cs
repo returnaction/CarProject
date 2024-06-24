@@ -2,6 +2,7 @@
 using CarProject.Domain.Entity;
 using CarProject.Domain.Enum;
 using CarProject.Domain.Response;
+using CarProject.Domain.ViewModels;
 using CarProject.Service.Interfaces;
 using GoogleApi.Entities;
 using System;
@@ -19,6 +20,64 @@ namespace CarProject.Service.Implementaions
         public CarSerivce(ICarRepository carRepository)
         {
             _carRepository = carRepository;
+        }
+
+        public async Task<IBaseResponse<bool>> CreateCar(CarViewModel carViewModel)
+        {
+            var baseResponse = new BaseResponse<bool>();
+
+            try
+            {
+                var car = new Car()
+                {
+                    Description = carViewModel.Description,
+                    DateCreate = carViewModel.DateCreate,
+                    Model = carViewModel.Model,
+                    Price = carViewModel.Price,
+                    Speed = carViewModel.Speed,
+                    Name = carViewModel.Name,
+                    TypeCar = (TypeCar)Convert.ToInt32(carViewModel.TypeCar)
+                };
+
+                await _carRepository.Create(car);
+
+                baseResponse.StatusCode = StatusCode.OK;
+                baseResponse.Description = "Машина создана";
+                return baseResponse;
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<bool>()
+                {
+                    Description = $"[CreateCar] : {ex.Message}"
+                };
+            }
+        }
+
+        public async Task<IBaseResponse<bool>> DeleteCar(int id)
+        {
+            var baseResponse = new BaseResponse<bool>();
+            try
+            {
+                var car = await _carRepository.Get(id);
+                if( car is null)
+                {
+                    baseResponse.StatusCode = StatusCode.OK;
+                    baseResponse.Description = "Машина не найдена";
+                }
+                await _carRepository.Delete(car);
+                baseResponse.StatusCode = StatusCode.OK;
+                baseResponse.Description = "Машина удалена";
+                return baseResponse;
+
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<bool>()
+                {
+                    Description = $"[DeleteCar] : {ex.Message}"
+                };
+            }
         }
 
         public async Task<IBaseResponse<Car>> GetCar(int id)
@@ -43,10 +102,36 @@ namespace CarProject.Service.Implementaions
             }
             catch (Exception ex)
             {
-
                 return new BaseResponse<Car>()
                 {
                     Description = $"[GetCar] : {ex.Message}"
+                };
+            }
+        }
+
+        public async Task<IBaseResponse<Car>> GetCarByName(string name)
+        {
+            var baseResponse = new BaseResponse<Car>();
+
+            try
+            {
+                var car = await _carRepository.GetCarByName(name);
+                if(car is null)
+                {
+                    baseResponse.Description = "Машина не найдена";
+                    baseResponse.StatusCode = StatusCode.OK;
+                    return baseResponse;
+                }
+
+                baseResponse.Data = car;
+                baseResponse.StatusCode = StatusCode.OK;
+                return baseResponse;
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Car>()
+                {
+                    Description = $"[GetByName] : {ex.Message}"
                 };
             }
         }
@@ -71,7 +156,6 @@ namespace CarProject.Service.Implementaions
             }
             catch (Exception ex)
             {
-
                 return new BaseResponse<List<Car>>()
                 {
                     Description = $"[GetCars] : {ex.Message}"
