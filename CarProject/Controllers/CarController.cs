@@ -62,7 +62,9 @@ namespace CarProject.Controllers
             return View(response.Data);
         }
 
+
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Save(CarViewModel carViewModel)
         {
             if (ModelState.IsValid)
