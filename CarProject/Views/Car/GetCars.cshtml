@@ -1,10 +1,11 @@
 ﻿@using CarProject.Domain.Entity
-@model IEnumerable<Car>
+@using CarProject.Domain.Response
+@model IBaseResponse<List<Car>>
 
 @{
 }
 
-@foreach (var item in Model)
+@foreach (var item in Model.Data)
 {
     <div>
         <p>Name: @item.Name</p>

@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CarProject.DAL\CarProject.DAL.csproj" />
     <ProjectReference Include="..\CarProject.Domain\CarProject.Domain.csproj" />
+    <ProjectReference Include="..\CarProject.Service\CarProject.Service.csproj" />
   </ItemGroup>
 
 </Project>

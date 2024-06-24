@@ -20,9 +20,9 @@ namespace CarProject.Service.Implementaions
             _carRepository = carRepository;
         }
 
-        public async Task<IBaseResponse<IEnumerable<Car>>> GetCars()
+        public async Task<IBaseResponse<List<Car>>> GetCars()
         {
-            var baseResponse = new BaseResponse<IEnumerable<Car>>();
+            var baseResponse = new BaseResponse<List<Car>>();
 
             try
             {
@@ -41,7 +41,7 @@ namespace CarProject.Service.Implementaions
             catch (Exception ex)
             {
 
-                return new BaseResponse<IEnumerable<Car>>()
+                return new BaseResponse<List<Car>>()
                 {
                     Description = $"[GetCars] : {ex.Message}"
                 };

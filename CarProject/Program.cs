@@ -1,6 +1,8 @@
 using CarProject.DAL;
 using CarProject.DAL.Interfaces;
 using CarProject.DAL.Repositories;
+using CarProject.Service.Implementaions;
+using CarProject.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarProject
@@ -18,6 +20,7 @@ namespace CarProject
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddScoped<ICarRepository, CarRepository>();
+            builder.Services.AddScoped<ICarSerivce, CarSerivce>();
 
             var app = builder.Build();
 

@@ -10,6 +10,6 @@ namespace CarProject.Service.Interfaces
 {
     public interface ICarSerivce
     {
-        Task<IBaseResponse<IEnumerable<Car>>> GetCars();
+        Task<IBaseResponse<List<Car>>> GetCars()
     }
 }

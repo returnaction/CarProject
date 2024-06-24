@@ -1,17 +1,22 @@
 ﻿using CarProject.DAL.Interfaces;
+using CarProject.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarProject.Controllers
 {
     public class CarController : Controller
     {
-        private readonly ICarRepository _carRepository;
+        private readonly ICarSerivce _carService;
 
-        public CarController(ICarRepository carRepository)
+        public CarController(ICarSerivce carService)
         {
-            _carRepository = carRepository;
+            _carService = carService;
         }
 
-        
+        public async Task<IActionResult> GetCars()
+        {
+            var response = await  _carService.GetCars();
+            return View(response);
+        }
     }
 }
