@@ -11,5 +11,6 @@ namespace CarProject.Service.Interfaces
     public interface ICarSerivce
     {
         Task<IBaseResponse<List<Car>>> GetCars();
+        Task<IBaseResponse<Car>> GetCar(int id);
     }
 }

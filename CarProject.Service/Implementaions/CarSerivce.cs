@@ -3,6 +3,7 @@ using CarProject.Domain.Entity;
 using CarProject.Domain.Enum;
 using CarProject.Domain.Response;
 using CarProject.Service.Interfaces;
+using GoogleApi.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,36 @@ namespace CarProject.Service.Implementaions
         public CarSerivce(ICarRepository carRepository)
         {
             _carRepository = carRepository;
+        }
+
+        public async Task<IBaseResponse<Car>> GetCar(int id)
+        {
+            var baseResponse = new BaseResponse<Car>();
+
+            try
+            {
+                var car = await _carRepository.Get(id);
+
+                if (car is null)
+                {
+                    baseResponse.StatusCode = StatusCode.OK;
+                    baseResponse.Description = "Машина не найдена";
+                    return baseResponse;
+                }
+
+                baseResponse.Data = car;
+                baseResponse.StatusCode = StatusCode.OK;
+                return baseResponse;
+
+            }
+            catch (Exception ex)
+            {
+
+                return new BaseResponse<Car>()
+                {
+                    Description = $"[GetCar] : {ex.Message}"
+                };
+            }
         }
 
         public async Task<IBaseResponse<List<Car>>> GetCars()

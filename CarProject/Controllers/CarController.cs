@@ -13,6 +13,12 @@ namespace CarProject.Controllers
             _carService = carService;
         }
 
+        public async Task<IActionResult> GetCar(int id)
+        {
+            var response = await _carService.GetCar(id);
+            return View(response);
+        }
+
         public async Task<IActionResult> GetCars()
         {
             var response = await  _carService.GetCars();
