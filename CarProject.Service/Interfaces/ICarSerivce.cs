@@ -16,7 +16,6 @@ namespace CarProject.Service.Interfaces
         Task<IBaseResponse<Car>> GetCar(int id);
         Task<IBaseResponse<bool>> DeleteCar(int id);
         Task<IBaseResponse<bool>> CreateCar(CarViewModel car);
-        Task<IBaseResponse<Car>> Edit(int id, CarViewModel model);
 
 
     }

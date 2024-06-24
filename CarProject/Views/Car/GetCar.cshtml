@@ -1,17 +1,17 @@
 ﻿@using CarProject.Domain.Entity
 @using CarProject.Domain.Response
-@model Car
+@model IBaseResponse<Car>
    
 
 @{
 }
 
 <div >
-    <p>Name: @Model.Name</p>
-    <p>Description: @Model.Description</p>
-    <p>Model: @Model.Model</p>
-    <p>Speed: @Model.Speed</p>
-    <p>Price: @Model.Price</p>
-    <p>Year: @Model.DateCreate</p>
-    <p>Type: @Model.TypeCar</p>
+    <p>Name: @Model.Data.Name</p>
+    <p>Description: @Model.Data.Description</p>
+    <p>Model: @Model.Data.Model</p>
+    <p>Speed: @Model.Data.Speed</p>
+    <p>Price: @Model.Data.Price</p>
+    <p>Year: @Model.Data.DateCreate</p>
+    <p>Type: @Model.Data.TypeCar</p>
 </div>
