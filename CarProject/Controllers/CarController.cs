@@ -33,15 +33,12 @@ namespace CarProject.Controllers
             return View(response);
         }
 
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteCar(int id)
         {
             var response = await _carService.DeleteCar(id);
-            if (response.Data is true)
-                return RedirectToAction("GetCars");
+            return RedirectToAction("GetCars");
 
-            // тут надо поменять логику  если false
-            return View(response);
+            
         }
 
         public async Task<IActionResult> CreateCar(CarViewModel carViewModel)
@@ -62,7 +59,6 @@ namespace CarProject.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Save(CarViewModel carViewModel)
         {
             if (ModelState.IsValid)

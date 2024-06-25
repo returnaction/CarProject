@@ -39,9 +39,23 @@
         <label asp-for="Avatar">Avatar</label>
         <input type="file" asp-for="Avatar" class="form-control" />
     </div>
+    <div class="form-control">
+        <label asp-for="TypeCar">Type Car</label>
+        <select asp-for="TypeCar" class="form-control">
+            <option disabled >Select Type</option>
+            <option value="0">Легкий Автомобиль</option>
+            <option value="1">Седан</option>
+            <option value="2">Хэтчбэк</option>
+            <option value="3">Минивэн</option>
+            <option value="4">Спортивная машина</option>
+            <option value="5">Внедорожник</option>
+        </select>
+    </div>
+
+
 
     <div class="form-control">
-        <button class="btn btn-primary float-end" type="submit">Создать</button>
+        <button class="btn btn-primary float-end" type="submit">@textTitle</button>
     </div>
 </form>
 

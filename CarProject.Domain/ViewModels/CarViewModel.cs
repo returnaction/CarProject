@@ -19,6 +19,6 @@ namespace CarProject.Domain.ViewModels
         public DateTime DateCreate { get; set; }
         public string TypeCar { get; set; }
 
-        public IFormFile Avatar { get; set; }
+        public IFormFile? Avatar { get; set; }
     }
 }

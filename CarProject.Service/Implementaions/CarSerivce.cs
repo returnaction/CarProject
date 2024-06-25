@@ -97,9 +97,8 @@ namespace CarProject.Service.Implementaions
                 car.Price = carViewModel.Price;
                 car.DateCreate = carViewModel.DateCreate;
                 car.Model = carViewModel.Model;
-                car.Name = carViewModel.Model;
-
-                // type car complete later;
+                car.Name = carViewModel.Name;
+                car.TypeCar = (TypeCar)Convert.ToInt32(carViewModel.TypeCar);
 
                 await _carRepository.Update(car);
 
