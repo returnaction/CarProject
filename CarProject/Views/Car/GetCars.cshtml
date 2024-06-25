@@ -5,15 +5,60 @@
 @{
 }
 
-@foreach (var item in Model.Data)
-{
-    <div>
-        <p>Name: @item.Name</p>
-        <p>Description: @item.Description</p>
-        <p>Model: @item.Model</p>
-        <p>Speed: @item.Speed</p>
-        <p>Price: @item.Price</p>
-        <p>Year: @item.DateCreate</p>
-        <p>Type: @item.TypeCar</p>
-    </div>
-}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Model</th>
+            <th scope="col">Speed</th>
+            <th scope="col">Price</th>
+            <th scope="col">Year</th>
+            <th scope="col">Type</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>
+                    <label>@item.Name</label>
+                </td>
+                <td>
+                    <label>@item.Description</label>
+                </td>
+                <td>
+                    <label>@item.Model</label>
+                </td>
+                <td>
+                    <label>@item.Speed</label>
+                </td>
+                <td>
+                    <label>@item.Price</label>
+                </td>
+                <td>
+                    <label>@item.DateCreate</label>
+                </td>
+                <td>
+                    <label>@item.TypeCar</label>
+                </td>
+                @if (User.IsInRole("Admin"))
+                {
+
+                    <td>
+                        <button class="btn-warning">
+                            <a asp-area="" asp-route-id="@item.Id" asp-controller="Car" asp-action="Edit">Править</a>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn-danger">
+                            <a asp-route-id="@item.Id" asp-controller="Car" asp-action="DeleteCar">Удалить</a>
+                        </button>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
