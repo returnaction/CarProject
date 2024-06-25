@@ -56,5 +56,12 @@ namespace CarProject.DAL.Repositories
         {
             return await  _db.Cars.ToListAsync();
         }
+
+        public async Task<Car> Update(Car entity)
+        {
+            _db.Cars.Update(entity);
+            await _db.SaveChangesAsync();
+            return entity;
+        }
     }
 }

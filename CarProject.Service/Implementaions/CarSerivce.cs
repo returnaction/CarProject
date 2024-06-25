@@ -80,6 +80,42 @@ namespace CarProject.Service.Implementaions
             }
         }
 
+        public async Task<IBaseResponse<Car>> Edit(int id, CarViewModel carViewModel)
+        {
+            var baseResponse = new BaseResponse<Car>();
+
+            try
+            {
+                var car = await _carRepository.Get(id);
+                if(car is null)
+                {
+                    baseResponse.StatusCode = StatusCode.CarNotFound;
+                    baseResponse.Description = "Машина не найдена";
+                }
+
+                car.Description = carViewModel.Description;
+                car.Price = carViewModel.Price;
+                car.DateCreate = carViewModel.DateCreate;
+                car.Model = carViewModel.Model;
+                car.Name = carViewModel.Model;
+
+                // type car complete later;
+
+                await _carRepository.Update(car);
+
+                baseResponse.StatusCode = StatusCode.OK;
+                baseResponse.Data = car;
+                return baseResponse;
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Car>()
+                {
+                    Description = $"[EditCar] : {ex.Message}"
+                };
+            }
+        }
+
         public async Task<IBaseResponse<Car>> GetCar(int id)
         {
             var baseResponse = new BaseResponse<Car>();
