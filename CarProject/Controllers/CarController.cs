@@ -18,7 +18,7 @@ namespace CarProject.Controllers
         public async Task<IActionResult> GetCar(int id)
         {
             var response = await _carService.GetCar(id);
-            return View(response.Data);
+            return View(response);
         }
 
         public async Task<IActionResult> GetByName(string name)

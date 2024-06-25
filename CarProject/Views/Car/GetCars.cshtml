@@ -9,7 +9,6 @@
     <thead>
         <tr>
             <th scope="col">Name</th>
-            <th scope="col">Description</th>
             <th scope="col">Model</th>
             <th scope="col">Speed</th>
             <th scope="col">Price</th>
@@ -24,10 +23,7 @@
         {
             <tr>
                 <td>
-                    <label>@item.Name</label>
-                </td>
-                <td>
-                    <label>@item.Description</label>
+                    <a asp-route-id="@item.Id" asp-controller="Car" asp-action="GetCar"><label>@item.Name</label></a>
                 </td>
                 <td>
                     <label>@item.Model</label>

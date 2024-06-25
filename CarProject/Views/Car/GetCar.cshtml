@@ -1,19 +1,26 @@
 ﻿@using CarProject.Domain.Entity
 @using CarProject.Domain.Response
 @model IBaseResponse<Car>
-   
 
 @{
 }
 
-
-
-<div >
-    <p>Name: @Model.Data.Name</p>
-    <p>Description: @Model.Data.Description</p>
-    <p>Model: @Model.Data.Model</p>
-    <p>Speed: @Model.Data.Speed</p>
-    <p>Price: @Model.Data.Price</p>
-    <p>Year: @Model.Data.DateCreate</p>
-    <p>Type: @Model.Data.TypeCar</p>
+<a class="btn btn-primary btn-sm" asp-action="GetCars" asp-controller="Car">Список машин</a>
+<div class="card mb-3" style="max-width: 800px; margin: auto;">
+    <div class="row g-0">
+        <div class="col-md-5">
+            <img src="~/images/car.png" class="img-fluid rounded-start" alt="@Model.Data.Name">
+        </div>
+        <div class="col-md-7">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Data.Name</h5>
+                <p class="card-text"><strong>Model:</strong> @Model.Data.Model</p>
+                <p class="card-text"><strong>Speed:</strong> @Model.Data.Speed</p>
+                <p class="card-text"><strong>Price:</strong> @Model.Data.Price</p>
+                <p class="card-text"><strong>Type:</strong> @Model.Data.TypeCar</p>
+                <p class="card-text"><strong>Year:</strong> @Model.Data.DateCreate</p>
+                <p class="card-text"><strong>Description:</strong> @Model.Data.Description</p>
+            </div>
+        </div>
+    </div>
 </div>

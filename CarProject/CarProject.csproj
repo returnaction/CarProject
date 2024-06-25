@@ -25,8 +25,4 @@
     <ProjectReference Include="..\CarProject.Service\CarProject.Service.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\css\" />
-  </ItemGroup>
-
 </Project>
