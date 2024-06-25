@@ -40,20 +40,16 @@
                 <td>
                     <label>@item.TypeCar</label>
                 </td>
-                @if (User.IsInRole("Admin"))
-                {
-
-                    <td>
-                        <button class="btn-warning">
-                            <a asp-area="" asp-route-id="@item.Id" asp-controller="Car" asp-action="Save">Изменить</a>
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn-danger">
-                            <a asp-route-id="@item.Id" asp-controller="Car" asp-action="DeleteCar">Удалить</a>
-                        </button>
-                    </td>
-                }
+                <td>
+                    <button class="btn-warning">
+                        <a asp-area="" asp-route-id="@item.Id" asp-controller="Car" asp-action="Save">Изменить</a>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn-danger">
+                        <a asp-route-id="@item.Id" asp-controller="Car" asp-action="DeleteCar">Удалить</a>
+                    </button>
+                </td>
             </tr>
         }
     </tbody>

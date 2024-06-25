@@ -116,9 +116,9 @@ namespace CarProject.Service.Implementaions
             }
         }
 
-        public async Task<IBaseResponse<Car>> GetCar(int id)
+        public async Task<IBaseResponse<CarViewModel>> GetCar(int id)
         {
-            var baseResponse = new BaseResponse<Car>();
+            var baseResponse = new BaseResponse<CarViewModel>();
 
             try
             {
@@ -131,14 +131,26 @@ namespace CarProject.Service.Implementaions
                     return baseResponse;
                 }
 
-                baseResponse.Data = car;
+                var carViewMode = new CarViewModel()
+                {
+                    Id = car.Id,
+                    Name = car.Name,
+                    Model = car.Model,
+                    Description = car.Description,
+                    DateCreate = car.DateCreate,
+                    TypeCar = car.TypeCar.ToString(),
+                    Price = car.Price,
+                    Speed = car.Speed
+                };
+
+                baseResponse.Data = carViewMode;
                 baseResponse.StatusCode = StatusCode.OK;
                 return baseResponse;
 
             }
             catch (Exception ex)
             {
-                return new BaseResponse<Car>()
+                return new BaseResponse<CarViewModel>()
                 {
                     Description = $"[GetCar] : {ex.Message}"
                 };
