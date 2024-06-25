@@ -54,7 +54,7 @@ namespace CarProject.Controllers
         public async Task<IActionResult> Save(int id)
         {
             if (id == 0)
-                return View();
+                return View(new CarViewModel());
 
             var response = await _carService.GetCar(id);
             return View(response.Data);

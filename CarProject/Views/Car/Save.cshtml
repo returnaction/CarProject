@@ -1,0 +1,47 @@
+﻿@using CarProject.Domain.ViewModels
+@model CarViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    var textTitle = Model.Id == 0 ? "Создать" : "Редактировать";
+}
+
+<div class="card">
+    <h2 class="text-center">@textTitle</h2>
+</div>
+
+<form asp-action="Save" asp-controller="Car" method="post" class="card mb-3" style="max-width: 800px; margin: auto;">
+    @* <input asp-for="Id" hidden /> *@
+    <div asp-validation-summary="All" style="font-size:23px"></div>
+    <div class="form-control">
+        <label  asp-for="Name">Name</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-control">
+        <label asp-for="Description">Description</label>
+        <input type="text" asp-for="Description" class="form-control" />
+    </div>
+    <div class="form-control">
+        <label asp-for="Model" >Model</label>
+        <input type="text" asp-for="Model" class="form-control" />
+    </div>
+    <div class="form-control">
+        <label asp-for="Speed">Speed</label>
+        <input type="number" asp-for="Speed" class="form-control" />
+    </div>
+    <div class="form-control">
+        <label asp-for="Price" >Price</label>
+        <input type="date" asp-for="DateCreate" class="form-control" />
+    </div>
+    <div class="form-control">
+        <label asp-for="Avatar">Avatar</label>
+        <input type="file" asp-for="Avatar" class="form-control" />
+    </div>
+
+    <div class="form-control">
+        <button class="btn btn-primary float-end" type="submit">Создать</button>
+    </div>
+</form>
+
